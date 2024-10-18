@@ -40,8 +40,11 @@ public final class Prescription {
         if (!validatePrescription()) {
             return false;
         }
+        //convert date to required date format
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
         String formattedDate = dateFormat.format(examinationDate);
+        
+        //try to add to text file if passed validation
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("prescription.txt", true))) {
             writer.write("Prescription ID: " + prescID + ", Name: " + firstName + " " + lastName + 
                          ", Address: " + address + ", Sphere: " + sphere + ", Axis: " + axis + 
@@ -105,7 +108,7 @@ public final class Prescription {
         if (!validateRemark(remark, type)) {
             return false;
         }
-
+        //try to add to text file if passed validation
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("remark.txt", true))) {
             writer.write("Remark Type: " + type + ", Remark: " + remark + "\n");
         } catch (IOException e) {
