@@ -91,20 +91,20 @@ class PrescriptionTest {
         assertTrue(prescription2.addPrescription(), "Test Case 4: Valid Axis - prescription2 should be added");
     }
 
-    // Test Case 5: Test the addPrescription function with invalid Axis values
+    // Test Case 5: Test the addPrescription function with invalid Axis, Sphere and Cylinder values
     @Test
     void testAddPrescriptionAxisInvalidValues() throws ParseException {
         // Create valid date format
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
 
-        // Test Data 1: Valid Axis value of -1 (just below lower boundary)
+        // Test Data 1: invalid Axis, Sphere and Cylinder values (just below lower boundary)
         Prescription prescription1 = new Prescription(9, "David", "Leen", 
-            "1234 Oak St, City, 2000, Country", 2.5f, -1.00f, -2.0f, 
+            "1234 Oak St, City, 2000, Country", -21.0f, -1.0f, -5.0f, 
             dateFormat.parse("12/10/23"), "Dr. Jonathan");
 
-        // Test Data 2: Valid Axis value of 181 (just above upper boundary)
+        // Test Data 2: invalid Axis, Sphere and Cylinder values (just above upper boundary)
         Prescription prescription2 = new Prescription(10, "David", "Leen", 
-            "1234 Oak St, City, 2000, Country", 2.5f, 181f, -2.0f, 
+            "1234 Oak St, City, 2000, Country", 21.0f, 181.0f, 5.0f, 
             dateFormat.parse("12/10/23"), "Dr. Jonathan");
 
         // Assert that both prescriptions are not added
@@ -114,18 +114,18 @@ class PrescriptionTest {
 
 
 
-        // Test Case 6: Test the addPrescription function with valid Cylinder values
+        // Test Case 6: Test the addPrescription function with all valid values to see if a fully valid prescription can be added
     @Test
     void testAddPrescriptionValidCylinderValues() throws ParseException {
         // Create valid date format
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
 
-        // Test Data 1: Valid Cylinder value at the lower boundary (-4.00)
+        // Test Data 1: All Valid data, including Cylinder value at the lower boundary (-4.00)
         Prescription prescription1 = new Prescription(11, "Fallah", "David", 
             "1234 Oak St, City, 2000, Country", -2.0f, 90f, -4.0f, 
             dateFormat.parse("12/10/23"), "Dr. Jonathan");
 
-        // Test Data 2: Valid Cylinder value at the upper boundary (+4.00)
+        // Test Data 2: All Valid data, including Valid Cylinder value at the upper boundary (+4.00)
         Prescription prescription2 = new Prescription(12, "Fallah", "David", 
             "1234 Oak St, City, 2000, Country", 2.0f, 90f, 4.0f, 
             dateFormat.parse("12/10/23"), "Dr. Jonathan");
